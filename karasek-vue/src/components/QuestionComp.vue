@@ -3,6 +3,7 @@ import { ref } from 'vue'
 const questions = await fetchData()
 const counter = ref(0);
 const disabledBtn = ref(true)
+const disabledRadio = ref(true)
 const inputs = document.querySelectorAll('input')
 const valueArray = Array.apply(null, Array(questions.length)).map(function () {})
 
