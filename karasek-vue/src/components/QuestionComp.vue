@@ -15,10 +15,12 @@ async function fetchData(){
 
 function nextQuestion(){
     counter.value++
+    isChecked(counter.value)
 }
 
 function previousQuestion(){
     counter.value--
+    isChecked(counter.value)
 }
 
 function canNext(){
@@ -36,6 +38,16 @@ function getValue(_position){
 
 function arrayNotFilled(){
     return disabledBtn.value = valueArray.some(element => element === undefined)
+}
+
+function isChecked(_identifier){
+    if(valueArray[_identifier] === undefined){
+        console.log('peut-être une solution')
+        
+    }else{
+        console.log(valueArray[_identifier - 1])
+        inputs[valueArray[_identifier - 1]].setAttribute('checked', true)
+    }
 }
 
 </script>
