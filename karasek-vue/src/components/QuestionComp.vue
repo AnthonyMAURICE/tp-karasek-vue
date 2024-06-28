@@ -1,17 +1,9 @@
 <script setup>
 import { ref } from 'vue'
-const questions = await fetchData()
+import { store, storeArray } from '../assets/store.js'
+
 const counter = ref(0);
 const disabledBtn = ref(true)
-
-const form = document.getElementById('form')
-const valueArray = Array.apply(null, Array(questions.length)).map(function () {})
-
-async function fetchData(){
-    const response = await fetch('../../src/components/data/data.json')
-    const data = await response.json()
-    return data
-};
 
 function nextQuestion(){
     counter.value++
@@ -24,7 +16,7 @@ function previousQuestion(){
 }
 
 function canNext(){
-    return counter.value == questions.length-1
+    return counter.value == store.questions.length-1
 }
 
 function canPrevious(){
@@ -32,28 +24,30 @@ function canPrevious(){
 }
 
 function getValue(_position){
-    valueArray[counter.value] = _position
+    storeArray.valueArray[counter.value] = _position
     arrayNotFilled()
 }
 
 function arrayNotFilled(){
-    return disabledBtn.value = valueArray.some(element => element === undefined)
+    return disabledBtn.value = storeArray.valueArray.some(element => element === undefined)
 }
 
 function isChecked(_identifier){
     const inputs = document.querySelectorAll('input')
-    if(valueArray[_identifier] === undefined){
+    const form = document.getElementById('form')
+    if(storeArray.valueArray[_identifier] === undefined){
+        console.log(form)
         form.reset()
     }else{
-        inputs[valueArray[_identifier] -1].checked = true
+        inputs[storeArray.valueArray[_identifier] -1].checked = true
     }
 }
 
 </script>
 
 <template>
-    <h1>Question {{ counter +1 }} sur {{ questions.length }}</h1>
-    <p>{{ questions[counter].question }}</p>
+    <h1>Question {{ counter +1 }} sur {{ store.questions.length }}</h1>
+    <p>{{ store.questions[counter].question }}</p>
     <fieldset>
         <div class="radio">
             <label for="worst">Pas du tout d'accord</label>
@@ -84,6 +78,7 @@ function isChecked(_identifier){
 
     fieldset{
         width: 40%;
+        border-radius: 10px;
     }
 
     .radio{
