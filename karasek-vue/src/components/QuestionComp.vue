@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import { store, storedArray } from '../assets/store.js'
 
 const counter = ref(0);
@@ -66,7 +67,7 @@ function isChecked(_identifier){
         </div>
     </fieldset>
     <button :disabled="canPrevious()" type="button" @click="previousQuestion">prev</button>
-    <button :disabled="disabledBtn">Validate</button>
+    <RouterLink class="link" to="/results"><button :disabled="disabledBtn" >Validate</button></RouterLink>
     <button :disabled="canNext()" type="button" @click="nextQuestion">next</button>
 </template>
 

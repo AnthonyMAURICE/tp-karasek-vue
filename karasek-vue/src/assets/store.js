@@ -6,10 +6,8 @@ async function fetchData(){
     return data
 };
 
-
 export const store = reactive({
-    questions: await fetchData(),
-    
+    questions: await fetchData()
 }) 
 
 export const storedArray = reactive({
