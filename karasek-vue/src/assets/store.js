@@ -12,6 +12,6 @@ export const store = reactive({
     
 }) 
 
-export const storeArray = reactive({
+export const storedArray = reactive({
     valueArray: Array.apply(null, Array(store.questions.length)).map(function () {})
 })

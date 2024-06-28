@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { store, storeArray } from '../assets/store.js'
+import { store, storedArray } from '../assets/store.js'
 
 const counter = ref(0);
 const disabledBtn = ref(true)
@@ -24,22 +24,21 @@ function canPrevious(){
 }
 
 function getValue(_position){
-    storeArray.valueArray[counter.value] = _position
+    storedArray.valueArray[counter.value] = _position
     arrayNotFilled()
 }
 
 function arrayNotFilled(){
-    return disabledBtn.value = storeArray.valueArray.some(element => element === undefined)
+    return disabledBtn.value = storedArray.valueArray.some(element => element === undefined)
 }
 
 function isChecked(_identifier){
     const inputs = document.querySelectorAll('input')
     const form = document.getElementById('form')
-    if(storeArray.valueArray[_identifier] === undefined){
-        console.log(form)
+    if(storedArray.valueArray[_identifier] === undefined){
         form.reset()
     }else{
-        inputs[storeArray.valueArray[_identifier] -1].checked = true
+        inputs[storedArray.valueArray[_identifier] -1].checked = true
     }
 }
 
