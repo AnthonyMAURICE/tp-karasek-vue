@@ -3,8 +3,8 @@ import { ref } from 'vue'
 const questions = await fetchData()
 const counter = ref(0);
 const disabledBtn = ref(true)
-const disabledRadio = ref(true)
-const inputs = document.querySelectorAll('input')
+
+const form = document.getElementById('form')
 const valueArray = Array.apply(null, Array(questions.length)).map(function () {})
 
 async function fetchData(){
@@ -41,12 +41,11 @@ function arrayNotFilled(){
 }
 
 function isChecked(_identifier){
+    const inputs = document.querySelectorAll('input')
     if(valueArray[_identifier] === undefined){
-        console.log('peut-être une solution')
-        
+        form.reset()
     }else{
-        console.log(valueArray[_identifier - 1])
-        inputs[valueArray[_identifier - 1]].setAttribute('checked', true)
+        inputs[valueArray[_identifier] -1].checked = true
     }
 }
 

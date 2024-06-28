@@ -4,7 +4,7 @@
 
 <template>
   <main>
-    <form action="">
+    <form id="form" action="">
       <Suspense>
         <Question />
       </Suspense>
