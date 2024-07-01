@@ -66,9 +66,12 @@ function isChecked(_identifier){
             <input @click="getValue(4)" type="radio" id="best" name="radio-btn">
         </div>
     </fieldset>
-    <button :disabled="canPrevious()" type="button" @click="previousQuestion">prev</button>
-    <RouterLink class="link" to="/results"><button :disabled="disabledBtn" >Validate</button></RouterLink>
-    <button :disabled="canNext()" type="button" @click="nextQuestion">next</button>
+    <div class="btn-wrapper">
+        <button :disabled="canPrevious()" type="button" @click="previousQuestion">prev</button>
+        <RouterLink class="link" to="/results"><button :disabled="disabledBtn" >Validate</button></RouterLink>
+        <button :disabled="canNext()" type="button" @click="nextQuestion">next</button>
+    </div>
+        
 </template>
 
 <style scoped>

@@ -15,7 +15,9 @@
 
 <style scoped>
   form{
-    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
 </style>
