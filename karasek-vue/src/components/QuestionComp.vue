@@ -24,8 +24,8 @@ function canPrevious(){
     return counter.value == 0
 }
 
-function getValue(_position){
-    storedArray.valueArray[counter.value] = _position
+function getValue(_event){
+    storedArray.valueArray[counter.value] = parseInt(_event.target.dataset.value)
     arrayNotFilled()
 }
 
@@ -51,19 +51,19 @@ function isChecked(_identifier){
     <fieldset>
         <div class="radio">
             <label for="worst">Pas du tout d'accord</label>
-            <input @click="getValue(1)" type="radio" id="worst" name="radio-btn">
+            <input @click="getValue" type="radio" data-value="1" id="worst" name="radio-btn">
         </div>
         <div class="radio">
             <label for="bad">Pas d'accord</label>
-            <input @click="getValue(2)" type="radio" id="bad" name="radio-btn">
+            <input @click="getValue" type="radio" data-value="2" id="bad" name="radio-btn">
         </div>
         <div class="radio">
             <label for="good">D'accord</label>
-            <input @click="getValue(3)" type="radio" id="good" name="radio-btn">
+            <input @click="getValue" type="radio" data-value="3" id="good" name="radio-btn">
         </div>
         <div class="radio">
             <label for="best">Tout à fait d'accord</label>
-            <input @click="getValue(4)" type="radio" id="best" name="radio-btn">
+            <input @click="getValue" type="radio" data-value="4" id="best" name="radio-btn">
         </div>
     </fieldset>
     <div class="btn-wrapper">
